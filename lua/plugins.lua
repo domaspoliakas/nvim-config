@@ -13,15 +13,12 @@ return require('packer').startup(function()
     requires = {
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-cmdline' },
+      { 'hrsh7th/cmp-path' },
     }
   })
 
   use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" } })
---[[
-  use({
-    '~/open-source/nvim-metals', 
-    requires = { "nvim-lua/plenary.nvim" } 
-  }) ]]
 
   use({
     "nvim-telescope/telescope.nvim",
@@ -55,5 +52,8 @@ return require('packer').startup(function()
   use({ 'lukas-reineke/indent-blankline.nvim' })
 
   use({ "ckipp01/scala-utils.nvim", requires = { "nvim-lua/plenary.nvim" } })
+
+  use({ "L3MON4D3/LuaSnip" })
+  use({ "saadparwaiz1/cmp_luasnip" })
 
 end)

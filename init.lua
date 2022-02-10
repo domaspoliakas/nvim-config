@@ -5,6 +5,7 @@ require('plugins.nvim-metals')
 require('plugins.telescope')
 require('plugins.treesitter')
 require('plugins.indent-blankline')
+require('plugins.luasnip')
 require('keymap')
 
 -- Get or set editor options, like :set. Invalid key is an error.
