@@ -34,6 +34,7 @@ cmp.setup({
   }
 })
 
+--[[
 cmp.setup.cmdline('/', {
   sources = {
     { name = 'buffer' },
@@ -46,4 +47,4 @@ cmp.setup.cmdline(':', {
   }, {
     { name = 'cmdline' }
   })
-})
+}) ]]

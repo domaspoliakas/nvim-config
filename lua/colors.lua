@@ -8,24 +8,28 @@
 --
 -- There for I defined an autocommand to set them _after_ 
 -- the colorscheme is applied to make sure it works
-vim.cmd [[augroup custom_highlight]]
 
-vim.cmd [[autocmd!]]
-vim.cmd [[au ColorScheme * hi! link LspReferenceText Visual]]
-vim.cmd [[au ColorScheme * hi! link LspReferenceRead Visual]]
-vim.cmd [[au ColorScheme * hi! link LspReferenceWrite Visual]]
+local augroup = vim.api.nvim_create_augroup
+local aucmd = vim.api.nvim_create_autocmd
 
-vim.cmd [[augroup END]]
+augroup("custom_highlight", {})
+
+aucmd("ColorScheme", { group = "custom_highlight", command = "hi! link LspReferenceText Visual"})
+aucmd("ColorScheme", { group = "custom_highlight", command = "hi! link LspReferenceRead Visual"})
+aucmd("ColorScheme", { group = "custom_highlight", command = "hi! link LspReferenceWrite Visual"})
 
 vim.fn.sign_define("LspDiagnosticsSignError", {text = ""})
 vim.fn.sign_define("LspDiagnosticsSignWarning", {text = ""})
 vim.fn.sign_define("LspDiagnosticsSignInformation", {text = ""})
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = ""})
 
-vim.cmd [[augroup highlight_yank]]
-    vim.cmd [[autocmd!]]
-    vim.cmd [[au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=300}]]
-vim.cmd [[augroup END]]
+augroup("highlight_yank", {})
+aucmd("TextYankPost", { 
+    group = "highlight_yank", 
+    callback = function() 
+        vim.highlight.on_yank{higroup="IncSearch", timeout=300} 
+    end 
+})
 
 -- This needs to go on the bottom because of reasons
 -- Check lua/plugins/onedark.lua for more

@@ -88,5 +88,11 @@ options.wildmode = "longest:full"
 "Pattern not found", "Back at original", etc. ]]
 vim.opt_global.shortmess:append("c")
 
+-- Folding
+-- Set folding to be done via an expression
+options.foldmethod = "expr"
+-- ...where that expression is treesitter
+options.foldexpr = "nvim_treesitter#foldexpr()"
+
 -- ## COLORS ##
 require('colors')
