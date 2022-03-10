@@ -12,20 +12,20 @@
 local augroup = vim.api.nvim_create_augroup
 local aucmd = vim.api.nvim_create_autocmd
 
-augroup("custom_highlight", {})
+local highlightAuGroup = augroup("custom_highlight", {})
 
-aucmd("ColorScheme", { group = "custom_highlight", command = "hi! link LspReferenceText Visual"})
-aucmd("ColorScheme", { group = "custom_highlight", command = "hi! link LspReferenceRead Visual"})
-aucmd("ColorScheme", { group = "custom_highlight", command = "hi! link LspReferenceWrite Visual"})
+aucmd("ColorScheme", { group = highlightAuGroup, command = "hi! link LspReferenceText Visual"})
+aucmd("ColorScheme", { group = highlightAuGroup, command = "hi! link LspReferenceRead Visual"})
+aucmd("ColorScheme", { group = highlightAuGroup, command = "hi! link LspReferenceWrite Visual"})
 
 vim.fn.sign_define("LspDiagnosticsSignError", {text = ""})
 vim.fn.sign_define("LspDiagnosticsSignWarning", {text = ""})
 vim.fn.sign_define("LspDiagnosticsSignInformation", {text = ""})
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = ""})
 
-augroup("highlight_yank", {})
+local yankAuGroup = augroup("highlight_yank", {})
 aucmd("TextYankPost", { 
-    group = "highlight_yank", 
+    group = yankAuGroup, 
     callback = function() 
         vim.highlight.on_yank{higroup="IncSearch", timeout=300} 
     end 

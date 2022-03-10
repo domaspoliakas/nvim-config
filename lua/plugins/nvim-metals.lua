@@ -32,5 +32,5 @@ aucmd("FileType", {
     callback = function()
       require("metals").initialize_or_attach(metals_config)
     end,
-    group = "lsp"
+    group = lsp_au_group
   })
