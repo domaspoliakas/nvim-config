@@ -8,6 +8,7 @@ local options = vim.o
 -- 	    select one from the menu. 
 options.completeopt = "menu,menuone,noselect"
 
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require'cmp'
 
 cmp.setup({
@@ -33,6 +34,8 @@ cmp.setup({
     { name = 'luasnip' }
   }
 })
+
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' }}))
 
 --[[
 cmp.setup.cmdline('/', {

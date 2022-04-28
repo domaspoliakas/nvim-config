@@ -1,5 +1,6 @@
 require('plugins')
 require('plugins.galaxyline')
+require('plugins.nvim-autopairs')
 require('plugins.nvim-cmp')
 require('plugins.nvim-metals')
 require('plugins.telescope')
