@@ -35,6 +35,8 @@ cmp.setup({
   }
 })
 
+-- TODO don't insert parens on imports somehow
+-- TODO don't insert parens on parameter-less stuff
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' }}))
 
 --[[

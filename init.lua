@@ -1,3 +1,13 @@
+-- Get or set editor options, like :set. Invalid key is an error.
+local options = vim.o
+
+-- Global (g:) editor variables.
+local global = vim.g
+
+-- Map leader to space
+vim.api.nvim_set_keymap("n", "<SPACE>", "<Nop>", { noremap = true })
+global["mapleader"] = " "
+
 require('plugins')
 require('plugins.galaxyline')
 require('plugins.nvim-autopairs')
@@ -8,12 +18,6 @@ require('plugins.treesitter')
 require('plugins.indent-blankline')
 require('plugins.luasnip')
 require('keymap')
-
--- Get or set editor options, like :set. Invalid key is an error.
-local options = vim.o
-
--- Global (g:) editor variables.
-local global = vim.g
 
 -- ###############
 -- ## SEARCHING ##
@@ -84,9 +88,11 @@ options.grepformat = "%f:%l:%c:%m"
 -- expand the longest matching common substring of commands
 options.wildmode = "longest:full"
 
---[[ don't give ins-completion-menu messages.  For example,
-"-- XXX completion (YYY)", "match 1 of 2", "The only match",
-"Pattern not found", "Back at original", etc. ]]
+--[[ 
+	  c	don't give |ins-completion-menu| messages.  For example,
+		"-- XXX completion (YYY)", "match 1 of 2", "The only match",
+		"Pattern not found", "Back at original", etc.
+]]
 vim.opt_global.shortmess:append("c")
 
 -- Folding

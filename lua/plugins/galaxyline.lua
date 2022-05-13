@@ -112,7 +112,6 @@ gls.left[3] = {
   FileName = {
       provider = function()
         local a = vim.fn.expand("%")
-        print(a)
         return a
       end,
       condition = buffer_not_empty,
