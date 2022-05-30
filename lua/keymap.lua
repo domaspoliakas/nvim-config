@@ -53,7 +53,7 @@ map("n", "<leader>da", [[<cmd>lua require"telescope.builtin".diagnostics()<CR>]]
 map("n", "<leader>db", [[<cmd>lua require"telescope.builtin".diagnostics({bufnr = 0})<CR>]])
 map("n", "<leader>tt", [[<cmd>lua require("metals.tvp").toggle_tree_view()<CR>]])
 map("n", "<leader>tr", [[<cmd>lua require("metals.tvp").reveal_in_tree()<CR>]])
-map("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format{ async = true }<CR>")
 map("n", "]c", [[<cmd>Lspsaga diagnostic_jump_next<CR>]])
 map("n", "[c", [[<cmd>Lspsaga diagnostic_jump_prev<CR>]])
 
