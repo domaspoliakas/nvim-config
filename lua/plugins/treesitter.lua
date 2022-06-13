@@ -12,6 +12,10 @@ require'treesitter-context'.setup {
   patterns = {
     json = {
       'pair'
+    },
+    scala = {
+      'object_definition',
+      'function_definition'
     }
   }
 }
