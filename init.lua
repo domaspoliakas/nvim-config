@@ -34,6 +34,12 @@ options.smartcase = true
 -- ## GENERAL ##
 -- #############
 
+
+-- When on, Vim automatically saves undo history to an undo file when
+-- writing a buffer to a file, and restores undo history from the same
+-- file on buffer read.
+options.undofile = true
+
 -- When off a buffer is unloaded (including loss of undo information)
 -- when it is abandoned.  When on a buffer becomes hidden when it is
 -- abandoned.
