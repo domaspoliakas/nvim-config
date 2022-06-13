@@ -41,6 +41,7 @@ return require('packer').startup(function()
   use({ "b3nj5m1n/kommentary" })
 
   use({ "nvim-treesitter/nvim-treesitter", run = ':TSUpdate' })
+  use({ 'nvim-treesitter/nvim-treesitter-context'})
 
   use({ 
     "tyru/open-browser-github.vim", 
