@@ -5,7 +5,8 @@ metals_config = require("metals").bare_config()
 metals_config.init_options.statusBarProvider = "on"
 metals_config.settings = {
   showImplicitArguments = true,
-  showInferredType = false
+  showInferredType = false,
+  superMethodLensesEnabled = false
 }
 
 metals_config.on_attach = function(client, bufnr)
@@ -23,6 +24,8 @@ metals_config.on_attach = function(client, bufnr)
       buffer = bufnr,
       callback = vim.lsp.codelens.refresh
     })
+
+  require('metals').setup_dap()
 end
 
 lsp_au_group = augroup("lsp", {})

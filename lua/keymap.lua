@@ -20,6 +20,15 @@ map("n", "<leader>re", [[<cmd>lua require"telescope.builtin".registers()<CR>]])
 map("n", "<leader>qf", [[<cmd>lua require"telescope.builtin".quickfix()<CR>]])
 map("n", "<leader>mc", [[<cmd>lua require("telescope").extensions.metals.commands()<CR>]])
 
+-- dap
+map("n", "<leader>dc", [[<cmd>lua require("dap").continue()<CR>]])
+map("n", "<leader>dr", [[<cmd>lua require("dap").repl.toggle()<CR>]])
+map("n", "<leader>dK", [[<cmd>lua require("dap.ui.widgets").hover()<CR>]])
+map("n", "<leader>dt", [[<cmd>lua require("dap").toggle_breakpoint()<CR>]])
+map("n", "<leader>dso", [[<cmd>lua require("dap").step_over()<CR>]])
+map("n", "<leader>dsi", [[<cmd>lua require("dap").step_into()<CR>]])
+map("n", "<leader>drl", [[<cmd>lua require("dap").run_last()<CR>]])
+
 -- quickfix
 map("n", "<leader>fo", ":copen<cr>")
 map("n", "<leader>fc", ":cclose<cr>")
@@ -48,6 +57,7 @@ map("n", "<leader>rn", [[<cmd>lua require('lspsaga.rename').rename()<CR>]])
 -- map("n", "<leader>ca", [[<cmd>lua vim.lsp.buf.code_action()<cr>]])
 map("n", "<leader>a", [[<cmd>lua require('lspsaga.codeaction').code_action()<cr>]])
 map("v", "<leader>a", [[:<C-U>lua require('lspsaga.codeaction').range_code_action()<cr>]]) 
+map("n", "<leader>cl", [[<cmd>lua vim.lsp.codelens.run()<CR>]])
 map("n", "<leader>K", [[<cmd>lua require"metals".hover_worksheet()<CR>]])
 map("n", "<leader>da", [[<cmd>lua require"telescope.builtin".diagnostics()<CR>]])
 map("n", "<leader>db", [[<cmd>lua require"telescope.builtin".diagnostics({bufnr = 0})<CR>]])

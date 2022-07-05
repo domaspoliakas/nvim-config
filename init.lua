@@ -17,6 +17,7 @@ require('plugins.telescope')
 require('plugins.treesitter')
 require('plugins.indent-blankline')
 require('plugins.luasnip')
+require('plugins.nvim-dap')
 require('keymap')
 
 -- ###############

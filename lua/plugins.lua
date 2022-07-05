@@ -60,4 +60,6 @@ return require('packer').startup(function()
 
   use({ "windwp/nvim-autopairs" })
 
+  use({ 'mfussenegger/nvim-dap' })
+
 end)
