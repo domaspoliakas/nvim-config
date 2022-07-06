@@ -54,18 +54,23 @@ map("n", "gr", [[<cmd>lua vim.lsp.buf.references()<CR>]])
 map("n", "<leader>sd", [[<cmd>lua require"telescope.builtin".lsp_document_symbols()<CR>]])
 map("n", "<leader>sw", [[<cmd>lua require"telescope.builtin".lsp_workspace_symbols()<CR>]])
 map("n", "<leader>rn", [[<cmd>lua require('lspsaga.rename').rename()<CR>]])
--- map("n", "<leader>ca", [[<cmd>lua vim.lsp.buf.code_action()<cr>]])
 map("n", "<leader>a", [[<cmd>lua require('lspsaga.codeaction').code_action()<cr>]])
 map("v", "<leader>a", [[:<C-U>lua require('lspsaga.codeaction').range_code_action()<cr>]]) 
 map("n", "<leader>cl", [[<cmd>lua vim.lsp.codelens.run()<CR>]])
 map("n", "<leader>K", [[<cmd>lua require"metals".hover_worksheet()<CR>]])
-map("n", "<leader>da", [[<cmd>lua require"telescope.builtin".diagnostics()<CR>]])
-map("n", "<leader>db", [[<cmd>lua require"telescope.builtin".diagnostics({bufnr = 0})<CR>]])
 map("n", "<leader>tt", [[<cmd>lua require("metals.tvp").toggle_tree_view()<CR>]])
 map("n", "<leader>tr", [[<cmd>lua require("metals.tvp").reveal_in_tree()<CR>]])
 map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format{ async = true }<CR>")
-map("n", "]c", [[<cmd>Lspsaga diagnostic_jump_next<CR>]])
-map("n", "[c", [[<cmd>Lspsaga diagnostic_jump_prev<CR>]])
 
 map("n", "<leader>st", [[<cmd>lua require("metals").toggle_setting("showImplicitArguments")<CR>]])
+
+-- diagnostics
+map("n", "<leader>da", [[<cmd>lua require"telescope.builtin".diagnostics()<CR>]])
+map("n", "<leader>db", [[<cmd>lua require"telescope.builtin".diagnostics({bufnr = 0})<CR>]])
+map("n", "<leader>dae", [[<cmd>lua require"telescope.builtin".diagnostics({ severity = "E" })<CR>]])
+map("n", "<leader>dbe", [[<cmd>lua require"telescope.builtin".diagnostics({ severity = "E", bufnr = 0})<CR>]])
+map("n", "]d", [[<cmd>Lspsaga diagnostic_jump_next<CR>]])
+map("n", "[d", [[<cmd>Lspsaga diagnostic_jump_prev<CR>]])
+
+
 
