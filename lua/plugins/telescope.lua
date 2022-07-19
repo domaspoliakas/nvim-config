@@ -1,10 +1,15 @@
+local actionLayout = require("telescope.actions.layout")
+
 require('telescope').setup {
   defaults = {
     file_ignore_patterns = { "golden" },
     mappings = {
       i = {
-        -- ["<C-t>"] = "layout.toggle_preview",
-        ["<C-h>"] = "which_key"
+        ["<C-h>"] = "which_key",
+        ["<C-t>"] = actionLayout.toggle_preview
+      },
+      n = {
+        ["<C-t>"] = actionLayout.toggle_preview
       }
     }
   }
