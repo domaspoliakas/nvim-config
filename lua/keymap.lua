@@ -14,7 +14,6 @@ end
 -- telescope
 map("n", "<leader>ff", [[<cmd>lua require"telescope.builtin".find_files()<CR>]])
 map("n", "<leader>lg", [[<cmd>lua require"telescope.builtin".live_grep(({ prompt_prefix=🔍 }))<CR>]])
-map("n", "<leader>fb", [[<cmd>lua require"telescope.builtin".file_browser()<CR>]])
 map("n", "<leader>bu", [[<cmd>lua require"telescope.builtin".buffers()<CR>]])
 map("n", "<leader>re", [[<cmd>lua require"telescope.builtin".registers()<CR>]])
 map("n", "<leader>qf", [[<cmd>lua require"telescope.builtin".quickfix()<CR>]])

@@ -2,6 +2,10 @@ local actionLayout = require("telescope.actions.layout")
 
 require('telescope').setup {
   defaults = {
+    layout_config = {
+      flip_columns = 200
+    },
+    layout_strategy = "flex",
     file_ignore_patterns = { "golden" },
     mappings = {
       i = {
@@ -12,18 +16,13 @@ require('telescope').setup {
         ["<C-t>"] = actionLayout.toggle_preview
       }
     }
-  }
-  --[[ defaults = {
-    vimgrep_arguments = {
-      "rg",
-      "--color=never",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
-      "--smart-case",
-      "-g",
-      "golden"
+  },
+  pickers = {
+    find_files = {
+      previewer = false
+    },
+    buffers = {
+      previewer = false
     }
-  } ]]
+  }
 }
