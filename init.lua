@@ -107,6 +107,8 @@ vim.opt_global.shortmess:append("c")
 options.foldmethod = "expr"
 -- ...where that expression is treesitter
 options.foldexpr = "nvim_treesitter#foldexpr()"
+-- initial foldlevel
+options.foldlevel = 3
 
 -- ## COLORS ##
 require('colors')
