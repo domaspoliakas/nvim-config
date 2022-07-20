@@ -62,4 +62,6 @@ return require('packer').startup(function()
 
   use({ 'mfussenegger/nvim-dap' })
 
+  use({ 'tpope/vim-unimpaired' })
+
 end)
