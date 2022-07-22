@@ -64,4 +64,6 @@ return require('packer').startup(function()
 
   use({ 'tpope/vim-unimpaired' })
 
+  use({ 'nvim-treesitter/nvim-treesitter-textobjects'})
+
 end)
