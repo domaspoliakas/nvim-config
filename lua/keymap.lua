@@ -17,6 +17,7 @@ map("n", "<leader>lg", [[<cmd>lua require"telescope.builtin".live_grep(({ prompt
 map("n", "<leader>bu", [[<cmd>lua require"telescope.builtin".buffers()<CR>]])
 map("n", "<leader>re", [[<cmd>lua require"telescope.builtin".registers()<CR>]])
 map("n", "<leader>qf", [[<cmd>lua require"telescope.builtin".quickfix()<CR>]])
+map("n", "<leader>tl", [[<cmd>lua require"telescope.builtin".resume()<CR>]])
 map("n", "<leader>mc", [[<cmd>lua require("telescope").extensions.metals.commands()<CR>]])
 
 -- dap
@@ -57,8 +58,8 @@ map("n", "<leader>a", [[<cmd>lua require('lspsaga.codeaction').code_action()<cr>
 map("v", "<leader>a", [[:<C-U>lua require('lspsaga.codeaction').range_code_action()<cr>]]) 
 map("n", "<leader>cl", [[<cmd>lua vim.lsp.codelens.run()<CR>]])
 map("n", "<leader>K", [[<cmd>lua require"metals".hover_worksheet()<CR>]])
-map("n", "<leader>tt", [[<cmd>lua require("metals.tvp").toggle_tree_view()<CR>]])
-map("n", "<leader>tr", [[<cmd>lua require("metals.tvp").reveal_in_tree()<CR>]])
+-- map("n", "<leader>tt", [[<cmd>lua require("metals.tvp").toggle_tree_view()<CR>]])
+-- map("n", "<leader>tr", [[<cmd>lua require("metals.tvp").reveal_in_tree()<CR>]])
 map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format{ async = true }<CR>")
 
 map("n", "<leader>st", [[<cmd>lua require("metals").toggle_setting("showImplicitArguments")<CR>]])
