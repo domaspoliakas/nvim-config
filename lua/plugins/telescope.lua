@@ -3,7 +3,9 @@ local actionLayout = require("telescope.actions.layout")
 require('telescope').setup {
   defaults = {
     layout_config = {
-      flip_columns = 200
+      flex = {
+        flip_columns = 200
+      }
     },
     layout_strategy = "flex",
     file_ignore_patterns = { "golden" },
