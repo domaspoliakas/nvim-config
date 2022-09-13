@@ -12,7 +12,7 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- telescope
-map("n", "<leader>ff", [[<cmd>lua require"telescope.builtin".find_files()<CR>]])
+map("n", "<leader>ff", [[<cmd>lua require"telescope.builtin".git_files()<CR>]])
 map("n", "<leader>lg", [[<cmd>lua require"telescope.builtin".live_grep(({ prompt_prefix=🔍 }))<CR>]])
 map("n", "<leader>bu", [[<cmd>lua require"telescope.builtin".buffers()<CR>]])
 map("n", "<leader>re", [[<cmd>lua require"telescope.builtin".registers()<CR>]])

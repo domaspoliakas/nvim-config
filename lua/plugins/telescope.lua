@@ -23,6 +23,9 @@ require('telescope').setup {
     find_files = {
       previewer = false
     },
+    git_files = {
+      previewer = false
+    },
     buffers = {
       previewer = false
     }
