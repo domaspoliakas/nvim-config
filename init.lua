@@ -35,6 +35,7 @@ options.smartcase = true
 -- ## GENERAL ##
 -- #############
 
+options.splitkeep = "screen"
 
 -- When on, Vim automatically saves undo history to an undo file when
 -- writing a buffer to a file, and restores undo history from the same

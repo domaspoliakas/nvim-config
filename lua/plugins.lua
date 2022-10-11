@@ -30,7 +30,7 @@ return require('packer').startup(function()
 
   use({ "machakann/vim-sandwich" })
 
-  use({ 'tami5/lspsaga.nvim' })
+  use({ 'glepnir/lspsaga.nvim' })
 
   use({ "norcalli/nvim-colorizer.lua" })
 
