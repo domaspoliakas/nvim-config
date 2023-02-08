@@ -18,6 +18,8 @@ return require('packer').startup(function()
     }
   })
 
+  use({'neovim/nvim-lspconfig'})
+
   use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" } })
 
   use({
@@ -30,7 +32,10 @@ return require('packer').startup(function()
 
   use({ "machakann/vim-sandwich" })
 
-  use({ 'glepnir/lspsaga.nvim' })
+  use({ 'glepnir/lspsaga.nvim', branch = "main", config = function() 
+      require('lspsaga').setup({})
+    end,
+  })
 
   use({ "norcalli/nvim-colorizer.lua" })
 
@@ -65,5 +70,7 @@ return require('packer').startup(function()
   use({ 'tpope/vim-unimpaired' })
 
   use({ 'nvim-treesitter/nvim-treesitter-textobjects'})
+
+  use({ 'folke/neodev.nvim' })
 
 end)

@@ -1,4 +1,5 @@
 require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c", "lua", "rust", "json" },
   sync_install = false,
   auto_install = true,
 
@@ -56,6 +57,18 @@ require'nvim-treesitter.configs'.setup {
       },
     }
   }
+}
+
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.scala = {
+  install_info = {
+    -- url can be Git repo or a local directory:
+    -- url = "~/work/tree-sitter-scala",
+    url = "https://github.com/tree-sitter/tree-sitter-scala.git",
+    branch = "master",
+    files = {"src/parser.c", "src/scanner.c"},
+    requires_generate_from_grammar = false,
+  },
 }
 
 require'treesitter-context'.setup {

@@ -44,17 +44,17 @@ map("n", "<leader>sc", [[<cmd>lua RELOAD("scala-utils.coursier").complete_from_i
 map("n", "<C-h>", ":noh<cr>")
 
 -- LSP
-map("n", "<leader>k", [[<cmd>lua vim.lsp.buf.hover()<CR>]])
-map("v", "<leader>k", [[<cmd>lua vim.lsp.buf.hover()<CR>]])
+map("n", "<leader>k", [[<cmd>Lspsaga hover_doc<CR>]])
+map("v", "<leader>k", [[<cmd>Lspsaga hover_doc<CR>]])
 
 map("i", "<C-s>", [[<cmd>lua vim.lsp.buf.signature_help()<CR>]])
 map("n", "<C-s>", [[<cmd>lua vim.lsp.buf.signature_help()<CR>]])
-map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+map("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
 map("n", "gi", [[<cmd>lua vim.lsp.buf.implementation()<CR>]])
 map("n", "gr", [[<cmd>lua require"telescope.builtin".lsp_references()<CR>]])
 map("n", "<leader>sd", [[<cmd>lua require"telescope.builtin".lsp_document_symbols()<CR>]])
 map("n", "<leader>sw", [[<cmd>lua require"telescope.builtin".lsp_dynamic_workspace_symbols()<CR>]])
-map("n", "<leader>rn", [[<cmd>lua Lspsaga rename<CR>]])
+map("n", "<leader>rn", [[<cmd>Lspsaga rename<CR>]])
 map("n", "<leader>ca", [[<cmd>Lspsaga code_action<CR>]])
 -- map("v", "<leader>a", [[:<C-U>lua require('lspsaga.codeaction').range_code_action()<cr>]]) 
 map("n", "<leader>cl", [[<cmd>lua vim.lsp.codelens.run()<CR>]])
@@ -72,6 +72,3 @@ map("n", "<leader>dae", [[<cmd>lua require"telescope.builtin".diagnostics({ seve
 map("n", "<leader>dbe", [[<cmd>lua require"telescope.builtin".diagnostics({ severity = "E", bufnr = 0})<CR>]])
 map("n", "]d", [[<cmd>Lspsaga diagnostic_jump_next<CR>]])
 map("n", "[d", [[<cmd>Lspsaga diagnostic_jump_prev<CR>]])
-
-
-
