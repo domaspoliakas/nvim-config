@@ -44,7 +44,7 @@ parser_config.precog = {
 }
 
 -- example to setup sumneko and enable call snippets
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
   settings = {
     Lua = {
       completion = {
