@@ -73,4 +73,6 @@ return require('packer').startup(function()
 
   use({ 'folke/neodev.nvim' })
 
+  use {'nvim-telescope/telescope-ui-select.nvim' }
+
 end)
