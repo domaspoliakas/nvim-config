@@ -1,3 +1,5 @@
+require'nvim-treesitter.install'.compilers = { "gcc-12" }
+
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "c", "lua", "rust", "json" },
   sync_install = false,
@@ -82,3 +84,4 @@ require'treesitter-context'.setup {
     }
   }
 }
+
