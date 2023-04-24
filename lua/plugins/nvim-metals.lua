@@ -1,7 +1,7 @@
 local augroup = vim.api.nvim_create_augroup
 local aucmd = vim.api.nvim_create_autocmd
 
-metals_config = require("metals").bare_config()
+local metals_config = require("metals").bare_config()
 metals_config.init_options.statusBarProvider = "on"
 metals_config.settings = {
   showImplicitArguments = true,
@@ -9,7 +9,7 @@ metals_config.settings = {
   superMethodLensesEnabled = false
 }
 
-metals_config.on_attach = function(client, bufnr)
+metals_config.on_attach = function(_, bufnr)
   aucmd("CursorHold", {
       buffer = bufnr,
       callback = vim.lsp.buf.document_highlight
@@ -28,7 +28,7 @@ metals_config.on_attach = function(client, bufnr)
   require('metals').setup_dap()
 end
 
-lsp_au_group = augroup("lsp", {})
+local lsp_au_group = augroup("lsp", {})
 
 aucmd("FileType", {
     pattern = { "scala", "java", "sbt" },

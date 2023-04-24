@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 return require('packer').startup(function()
   -- Packer can manage itself
   use({ 'wbthomason/packer.nvim' })
@@ -6,10 +7,8 @@ return require('packer').startup(function()
 
   use({ "glepnir/galaxyline.nvim" })
 
-  use({ "joshdick/onedark.vim" })
-
-  use({ 
-    "hrsh7th/nvim-cmp", 
+  use({
+    "hrsh7th/nvim-cmp",
     requires = {
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-buffer' },
@@ -32,7 +31,7 @@ return require('packer').startup(function()
 
   use({ "machakann/vim-sandwich" })
 
-  use({ 'glepnir/lspsaga.nvim', branch = "main", config = function() 
+  use({ 'glepnir/lspsaga.nvim', branch = "main", config = function()
       require('lspsaga').setup({})
     end,
   })
@@ -49,9 +48,9 @@ return require('packer').startup(function()
   use({ 'nvim-treesitter/nvim-treesitter-context'})
   use({ 'nvim-treesitter/playground'})
 
-  use({ 
-    "tyru/open-browser-github.vim", 
-    requires = { 
+  use({
+    "tyru/open-browser-github.vim",
+    requires = {
       "tyru/open-browser.vim"
     }
   })
@@ -74,5 +73,7 @@ return require('packer').startup(function()
   use({ 'folke/neodev.nvim' })
 
   use {'nvim-telescope/telescope-ui-select.nvim' }
+
+  use "rebelot/kanagawa.nvim"
 
 end)

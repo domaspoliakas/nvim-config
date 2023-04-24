@@ -24,14 +24,14 @@ vim.fn.sign_define("LspDiagnosticsSignInformation", {text = ""})
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = ""})
 
 local yankAuGroup = augroup("highlight_yank", {})
-aucmd("TextYankPost", { 
-    group = yankAuGroup, 
-    callback = function() 
-        vim.highlight.on_yank{higroup="IncSearch", timeout=300} 
-    end 
+aucmd("TextYankPost", {
+    group = yankAuGroup,
+    callback = function()
+        vim.highlight.on_yank{higroup="IncSearch", timeout=300}
+    end
 })
 
 -- This needs to go on the bottom because of reasons
 -- Check lua/plugins/onedark.lua for more
-require('plugins.onedark')
+require('plugins.kanagawa')
 

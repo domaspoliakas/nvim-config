@@ -1,12 +1,7 @@
 -- Get or set editor options, like :set. Invalid key is an error.
 local options = vim.o
 
--- A comma separated list of options for Insert mode completion
--- menu	    Use a popup menu to show the possible completions.-
--- menuone  Use the popup menu also when there is only one match.
--- noselect  Do not select a match in the menu, force the user to
--- 	    select one from the menu. 
-options.completeopt = "menu,menuone,noselect"
+options.completeopt = "menu,menuone,noinsert"
 
 local handlers = require('nvim-autopairs.completion.handlers')
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
@@ -38,10 +33,6 @@ cmp.setup({
   }
 })
 
--- TODO don't insert parens on imports somehow
--- TODO don't insert parens on parameter-less stuff
--- cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' }}))
-
 local default_handler = handlers["*"]
 
 cmp.event:on(
@@ -68,8 +59,8 @@ cmp.event:on(
             local colonIndex = string.find(item.detail, ":[^:]*$")
 
             if colonIndex ~= nil and
-               colonIndex > 1 and
-               string.sub(item.detail, colonIndex - 1, colonIndex - 1) ~= ')' then
+                 (colonIndex > 1 or
+                  string.sub(item.detail, colonIndex - 1, colonIndex - 1) ~= ')') then
                 return
             end
 
@@ -80,17 +71,3 @@ cmp.event:on(
     }
   })
 )
---[[
-cmp.setup.cmdline('/', {
-  sources = {
-    { name = 'buffer' },
-  }
-})
-
-cmp.setup.cmdline(':', {
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
-}) ]]
