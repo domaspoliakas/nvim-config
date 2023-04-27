@@ -19,6 +19,23 @@ local function import(import_lines)
   end
 end
 
+local function import_custom()
+
+  local opts = {
+    prompt = "Enter something to import (e.g. \"org.http4s._\"): "
+  }
+
+  local on_confirm = function (input)
+    if input ~= nil and input ~= "" then
+      import{ "import " .. input }
+    else
+      print("Empty input")
+    end
+  end
+
+  vim.ui.input(opts, on_confirm)
+end
+
 local pickers = require "telescope.pickers"
 local finders = require "telescope.finders"
 local conf = require("telescope.config").values
@@ -43,6 +60,12 @@ local imports = function()
           "FunctionK (~>)",
           function ()
             import { "import cats.~> "}
+          end
+        },
+        {
+          "custom...",
+          function ()
+            import_custom()
           end
         }
       },
