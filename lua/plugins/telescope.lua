@@ -1,6 +1,8 @@
 local actionLayout = require("telescope.actions.layout")
 
-require('telescope').setup {
+local telescope = require("telescope")
+
+telescope.setup {
   defaults = {
     layout_config = {
       flex = {
@@ -32,4 +34,4 @@ require('telescope').setup {
   }
 }
 
-require("telescope").load_extension("ui-select")
+telescope.load_extension("ui-select")

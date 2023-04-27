@@ -1,7 +1,8 @@
 require("globals")
+local custom_funcs = require "custom"
 
 -- esc to leave terminal mode
-vim.api.nvim_set_keymap('t', '<Esc>', [[<c-\><c-n>]], {noremap = true})
+vim.api.nvim_set_keymap('t', '<Esc>', [[<c-\><c-n>]], { noremap = true })
 
 local function map(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
@@ -40,7 +41,7 @@ map("n", "<leader>fp", ":cprevious<cr>")
 map("n", "<leader>slc", [[<cmd>lua RELOAD("scala-utils.coursier").complete_from_line()<CR>]])
 map("n", "<leader>sc", [[<cmd>lua RELOAD("scala-utils.coursier").complete_from_input()<CR>]])
 
--- kill highlight 
+-- kill highlight
 map("n", "<C-h>", ":noh<cr>")
 
 -- LSP
@@ -56,7 +57,7 @@ map("n", "<leader>sd", [[<cmd>lua require"telescope.builtin".lsp_document_symbol
 map("n", "<leader>sw", [[<cmd>lua require"telescope.builtin".lsp_dynamic_workspace_symbols()<CR>]])
 map("n", "<leader>rn", [[<cmd>Lspsaga rename<CR>]])
 map("n", "<leader>ca", [[<cmd>Lspsaga code_action<CR>]])
--- map("v", "<leader>a", [[:<C-U>lua require('lspsaga.codeaction').range_code_action()<cr>]]) 
+-- map("v", "<leader>a", [[:<C-U>lua require('lspsaga.codeaction').range_code_action()<cr>]])
 map("n", "<leader>cl", [[<cmd>lua vim.lsp.codelens.run()<CR>]])
 map("n", "<leader>K", [[<cmd>lua require"metals".hover_worksheet()<CR>]])
 -- map("n", "<leader>tt", [[<cmd>lua require("metals.tvp").toggle_tree_view()<CR>]])
@@ -72,3 +73,7 @@ map("n", "<leader>dae", [[<cmd>lua require"telescope.builtin".diagnostics({ seve
 map("n", "<leader>dbe", [[<cmd>lua require"telescope.builtin".diagnostics({ severity = "E", bufnr = 0})<CR>]])
 map("n", "]d", [[<cmd>Lspsaga diagnostic_jump_next<CR>]])
 map("n", "[d", [[<cmd>Lspsaga diagnostic_jump_prev<CR>]])
+
+
+-- misc
+map("n", "<leader>i", [[<cmd>lua require "custom".imports()<CR>]])
