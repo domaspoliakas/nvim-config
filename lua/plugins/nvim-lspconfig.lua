@@ -23,7 +23,7 @@ end
 
 lspconfig.wsk_lsp.setup {
   on_attach = function (_, _)
-    require("vim.treesitter.query").set_query("json", "injections", [[
+    require("vim.treesitter.query").set("json", "injections", [[
       value: (string (string_content) @precog)
     ]])
   end

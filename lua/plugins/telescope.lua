@@ -31,6 +31,11 @@ telescope.setup {
     buffers = {
       previewer = false
     }
+  },
+  extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {}
+    }
   }
 }
 

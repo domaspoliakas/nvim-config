@@ -11,23 +11,23 @@ local function import(import_lines)
       packageIndex = i
       break
     end
-
   end
 
   if packageIndex ~= nil then
     vim.api.nvim_buf_set_lines(0, packageIndex, packageIndex, false, { "", unpack(import_lines) })
+  else
+    error("Could not find the package statement in this file")
   end
 end
 
 local function import_custom()
-
   local opts = {
     prompt = "Enter something to import (e.g. \"org.http4s._\"): "
   }
 
-  local on_confirm = function (input)
+  local on_confirm = function(input)
     if input ~= nil and input ~= "" then
-      import{ "import " .. input }
+      import { "import " .. input }
     else
       print("Empty input")
     end
@@ -36,59 +36,69 @@ local function import_custom()
   vim.ui.input(opts, on_confirm)
 end
 
-local pickers = require "telescope.pickers"
-local finders = require "telescope.finders"
-local conf = require("telescope.config").values
-local actions = require "telescope.actions"
-local action_state = require "telescope.actions.state"
-
--- Scala convenient imports telescope picker
+-- Import one of those pesky imports
 local imports = function()
-  local opts = require("telescope.themes").get_dropdown{}
-
-  pickers.new(opts, {
-    prompt_title = "import",
-    finder = finders.new_table {
-      results = {
-        {
-          "cats.syntax.all._",
-          function ()
-            import { "import cats.syntax.all._"}
-          end
-        },
-        {
-          "FunctionK (~>)",
-          function ()
-            import { "import cats.~> "}
-          end
-        },
-        {
-          "custom...",
-          function ()
-            import_custom()
-          end
-        }
-      },
-      entry_maker = function(entry)
-        return {
-          value = entry,
-          display = entry[1],
-          ordinal = entry[1],
-        }
+  vim.ui.select({
+      "cats.syntax.all._",
+      "cats.effect.syntax.all._",
+      "cats.data.NonEmptyMap",
+      "cats.data.NonEmptySet",
+      "monocle.syntax.all._",
+      "cats.data.NonEmptySet",
+      "scala.concurrent.duration._",
+      "FunctionK (~>)",
+      "custom...",
+    }, {
+      prompt = "Import something",
+      format_item = function(item)
+        return item
       end
     },
-    sorter = conf.generic_sorter(opts),
-    attach_mappings = function(prompt_bufnr, _)
-      actions.select_default:replace(function()
-        actions.close(prompt_bufnr)
-        local selection = action_state.get_selected_entry()
-        selection.value[2]()
-      end)
-      return true
-    end,
-  }):find()
+    function(item, _)
+      if item ~= nil then
+        if item == "custom..." then
+          import_custom()
+        else
+          import { "import " .. item }
+        end
+      end
+    end
+  )
 end
 
+------------
+
+local ts = vim.treesitter
+local q = vim.treesitter.query
+
+-- TODO neovim seems to crash when I do this
+local function effify()
+  local current_node = ts.get_node()
+  local class_query = q.parse("scala", "(class_definition name: (identifier) @name)")
+
+  print("Gotya")
+
+  if current_node ~= nil then
+    print("Gotya")
+    local tree = ts.get_node_text(current_node:tree():root(), 0)
+
+    for pattern, match, metadata in class_query:iter_matches(tree:root(), 0, 1, 21) do
+      for id, node in pairs(match) do
+        -- name of the _capture_
+        local name = class_query.captures[id]
+        local node_data = metadata[id]
+
+        print("HEK")
+        print(ts.get_node_text(node, 0))
+
+      end
+    end
+  end
+end
+
+---
+
 M.imports = imports
+M.effify = effify
 
 return M
