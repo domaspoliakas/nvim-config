@@ -3,20 +3,36 @@
 local M = {}
 
 local function import(import_lines)
+
+  -- detect if we're in scala-cli
+  local scalaCli = false
+  local topLine = vim.api.nvim_buf_get_lines(0, 0, 1, false)
+  if string.sub(topLine[1], 1, 3) == "//>" then
+    scalaCli = true
+  end
+
+  local searchString = "package"
+
+  if scalaCli then
+    searchString = "import"
+  end
+
+  local searchStringLength = string.len(searchString)
+
   local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
 
-  local packageIndex = nil
+  local insertPoint = nil
   for i, line in ipairs(lines) do
-    if string.sub(line, 1, 7) == "package" then
-      packageIndex = i
+    if string.sub(line, 1, searchStringLength) == searchString then
+      insertPoint = i
       break
     end
   end
 
-  if packageIndex ~= nil then
-    vim.api.nvim_buf_set_lines(0, packageIndex, packageIndex, false, { "", unpack(import_lines) })
+  if insertPoint ~= nil then
+    vim.api.nvim_buf_set_lines(0, insertPoint, insertPoint, false, { "", unpack(import_lines) })
   else
-    error("Could not find the package statement in this file")
+    error("Could not find where to insert the import; must find either //> or package")
   end
 end
 
