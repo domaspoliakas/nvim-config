@@ -3,7 +3,6 @@
 local M = {}
 
 local function import(import_lines)
-
   -- detect if we're in scala-cli
   local scalaCli = false
   local topLine = vim.api.nvim_buf_get_lines(0, 0, 1, false)
@@ -23,7 +22,11 @@ local function import(import_lines)
 
   local insertPoint = nil
   for i, line in ipairs(lines) do
-    if string.sub(line, 1, searchStringLength) == searchString then
+
+    local startsWithSearchString = string.sub(line, 1, searchStringLength) == searchString
+    local nextStartsWithSearchString = lines[i + 1] ~= nil and string.sub(lines[i + 1], 1, searchStringLength) == searchString
+
+    if startsWithSearchString and not nextStartsWithSearchString then
       insertPoint = i
       break
     end
@@ -106,7 +109,6 @@ local function effify()
 
         print("HEK")
         print(ts.get_node_text(node, 0))
-
       end
     end
   end
