@@ -33,7 +33,7 @@ local function import(import_lines)
   end
 
   if insertPoint ~= nil then
-    vim.api.nvim_buf_set_lines(0, insertPoint, insertPoint, false, { "", unpack(import_lines) })
+    vim.api.nvim_buf_set_lines(0, insertPoint, insertPoint, false, { unpack(import_lines) })
   else
     error("Could not find where to insert the import; must find either //> or package")
   end

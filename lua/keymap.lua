@@ -1,4 +1,5 @@
 require("globals")
+local wk = require "which-key"
 local custom_funcs = require "custom"
 
 -- esc to leave terminal mode
@@ -12,6 +13,7 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+
 -- telescope
 map("n", "<leader>gf", [[<cmd>lua require"telescope.builtin".git_files()<CR>]])
 map("n", "<leader>ff", [[<cmd>lua require"telescope.builtin".find_files()<CR>]])
@@ -22,14 +24,40 @@ map("n", "<leader>qf", [[<cmd>lua require"telescope.builtin".quickfix()<CR>]])
 map("n", "<leader>tl", [[<cmd>lua require"telescope.builtin".resume()<CR>]])
 map("n", "<leader>mc", [[<cmd>lua require("telescope").extensions.metals.commands()<CR>]])
 
--- dap
-map("n", "<leader>dc", [[<cmd>lua require("dap").continue()<CR>]])
-map("n", "<leader>dr", [[<cmd>lua require("dap").repl.toggle()<CR>]])
-map("n", "<leader>dK", [[<cmd>lua require("dap.ui.widgets").hover()<CR>]])
-map("n", "<leader>dt", [[<cmd>lua require("dap").toggle_breakpoint()<CR>]])
-map("n", "<leader>dso", [[<cmd>lua require("dap").step_over()<CR>]])
-map("n", "<leader>dsi", [[<cmd>lua require("dap").step_into()<CR>]])
-map("n", "<leader>drl", [[<cmd>lua require("dap").run_last()<CR>]])
+
+wk.register({
+  d = {
+    name = "Diagnostics and DAP",
+    a = {
+      name = "All diagnostics",
+      a = { [[<cmd>lua require"telescope.builtin".diagnostics()<CR>]], "All" },
+      e = { [[<cmd>lua require"telescope.builtin".diagnostics({ severity = "E" })<CR>]], "Errors" },
+      w = { [[<cmd>lua require"telescope.builtin".diagnostics({ severity = "W" })<CR>]], "Warnings" }
+    },
+    b = {
+      name = "Buffer diagnostics",
+      a = { [[<cmd>lua require"telescope.builtin".diagnostics({ bufnr = 0 })<CR>]], "All" },
+      e = { [[<cmd>lua require"telescope.builtin".diagnostics({ severity = "E", bufnr = 0})<CR>]], "Errors" },
+      w = { [[<cmd>lua require"telescope.builtin".diagnostics({ severity = "W", bufnr = 0})<CR>]], "Warnings" }
+    },
+    c = { [[<cmd>lua require("dap").continue()<CR>]], "Continue" },
+    r = { [[<cmd>lua require("dap").repl.toggle()<CR>]], "REPL Toggle" },
+    K = { [[<cmd>lua require("dap.ui.widgets").hover()<CR>]], "Hover" },
+    t = { [[<cmd>lua require("dap").toggle_breakpoint()<CR>]], "Toggle breakpoint" },
+    s = {
+      name = "step...",
+      o = { [[<cmd>lua require("dap").step_over()<CR>]], "Step over" },
+      i = { [[<cmd>lua require("dap").step_into()<CR>]], "Step into" }
+    },
+    rl = { [[<cmd>lua require("dap").run_last()<CR>]], "run last" },
+
+  },
+}, { prefix = "<leader>" })
+
+-- diagnostics
+map("n", "]d", [[<cmd>Lspsaga diagnostic_jump_next<CR>]])
+map("n", "[d", [[<cmd>Lspsaga diagnostic_jump_prev<CR>]])
+
 
 -- quickfix
 map("n", "<leader>fo", ":copen<cr>")
@@ -63,17 +91,7 @@ map("n", "<leader>K", [[<cmd>lua require"metals".hover_worksheet()<CR>]])
 -- map("n", "<leader>tt", [[<cmd>lua require("metals.tvp").toggle_tree_view()<CR>]])
 -- map("n", "<leader>tr", [[<cmd>lua require("metals.tvp").reveal_in_tree()<CR>]])
 map("n", "<leader>f", "<cmd>lua vim.lsp.buf.format{ async = true }<CR>")
-
 map("n", "<leader>st", [[<cmd>lua require("metals").toggle_setting("showImplicitArguments")<CR>]])
-
--- diagnostics
-map("n", "<leader>da", [[<cmd>lua require"telescope.builtin".diagnostics()<CR>]])
-map("n", "<leader>db", [[<cmd>lua require"telescope.builtin".diagnostics({bufnr = 0})<CR>]])
-map("n", "<leader>dae", [[<cmd>lua require"telescope.builtin".diagnostics({ severity = "E" })<CR>]])
-map("n", "<leader>dbe", [[<cmd>lua require"telescope.builtin".diagnostics({ severity = "E", bufnr = 0})<CR>]])
-map("n", "]d", [[<cmd>Lspsaga diagnostic_jump_next<CR>]])
-map("n", "[d", [[<cmd>Lspsaga diagnostic_jump_prev<CR>]])
-
 
 -- misc
 map("n", "<leader>i", [[<cmd>lua require "custom".imports()<CR>]])
