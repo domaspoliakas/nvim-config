@@ -59,11 +59,17 @@ end
 local imports = function()
   vim.ui.select({
       "cats.syntax.all._",
+      "cats.Order",
       "cats.effect.syntax.all._",
+      "cats.effect.Ref",
+      "cats.effect.Deferred",
+      "cats.effect.Temporal",
+      "cats.effect.Resource",
       "cats.data.NonEmptyMap",
       "cats.data.NonEmptySet",
+      "fs2.Stream",
+      "io.circe.syntax._",
       "monocle.syntax.all._",
-      "cats.data.NonEmptySet",
       "scala.concurrent.duration._",
       "FunctionK (~>)",
       "custom...",
@@ -77,6 +83,8 @@ local imports = function()
       if item ~= nil then
         if item == "custom..." then
           import_custom()
+        elseif item == "FunctionK (~>)" then
+          import { "import cats.~>"}
         else
           import { "import " .. item }
         end

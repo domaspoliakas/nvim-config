@@ -30,7 +30,7 @@ wk.register({
     name = "Diagnostics and DAP",
     a = {
       name = "All diagnostics",
-      a = { [[<cmd>lua require"telescope.builtin".diagnostics()<CR>]], "All" },
+      a = { [[<cmd>lua require"telescope.builtin".diagnostics({ severity_limit = "HINT", sort_by = "severity"})<CR>]], "All" },
       e = { [[<cmd>lua require"telescope.builtin".diagnostics({ severity = "E" })<CR>]], "Errors" },
       w = { [[<cmd>lua require"telescope.builtin".diagnostics({ severity = "W" })<CR>]], "Warnings" }
     },

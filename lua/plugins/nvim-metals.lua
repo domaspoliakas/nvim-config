@@ -17,7 +17,9 @@ metals_config.on_attach = function(_, bufnr)
 
   aucmd("CursorMoved", {
       buffer = bufnr,
-      callback = vim.lsp.buf.clear_references
+      callback = function (args) 
+        vim.lsp.buf.clear_references(args.buf)
+      end
     })
 
   aucmd({"BufEnter", "CursorHold", "InsertLeave"}, {

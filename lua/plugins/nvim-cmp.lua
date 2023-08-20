@@ -27,7 +27,16 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
   sources = {
-    { name = 'nvim_lsp' },
+    {
+      name = 'nvim_lsp'
+      --[[ entry_filter = function(entry, ctx)
+        print("POTOOT")
+        print(vim.inspect(entry:get_completion_item()))
+        print(require('cmp.types').lsp.CompletionItemKind[entry:get_kind()])
+        -- print(vim.inspect(ctx))
+        return true
+      end ]]
+    },
     { name = 'buffer' },
     { name = 'luasnip' }
   }
