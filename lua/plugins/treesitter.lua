@@ -73,7 +73,7 @@ parser_config.scala = {
   },
 }
 
-require'treesitter-context'.setup {
+--[[ require'treesitter-context'.setup {
   patterns = {
     json = {
       'pair'
@@ -83,5 +83,5 @@ require'treesitter-context'.setup {
       'function_definition'
     }
   }
-}
+} ]]
 

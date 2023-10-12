@@ -6,7 +6,8 @@ metals_config.init_options.statusBarProvider = "on"
 metals_config.settings = {
   showImplicitArguments = true,
   showInferredType = false,
-  superMethodLensesEnabled = false
+  superMethodLensesEnabled = false,
+  enableSemanticHighlighting = false
 }
 
 metals_config.on_attach = function(_, bufnr)
