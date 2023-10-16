@@ -1,81 +1,81 @@
 ---@diagnostic disable: undefined-global
-return require('packer').startup(function()
+return require('lazy').setup({
   -- Packer can manage itself
-  use({ 'wbthomason/packer.nvim' })
+  { 'wbthomason/packer.nvim' },
 
-  use({ 'kyazdani42/nvim-web-devicons' })
+  { 'kyazdani42/nvim-web-devicons' },
 
-  use({ "glepnir/galaxyline.nvim" })
+  { "glepnir/galaxyline.nvim" },
 
-  use({
+  {
     "hrsh7th/nvim-cmp",
-    requires = {
+    dependencies = {
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-buffer' },
       -- { 'hrsh7th/cmp-cmdline' },
       { 'hrsh7th/cmp-path' },
     }
-  })
+  },
 
-  use({'neovim/nvim-lspconfig'})
+  {'neovim/nvim-lspconfig'},
 
-  use({'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" } })
+  {'scalameta/nvim-metals', dependencies = { "nvim-lua/plenary.nvim" } },
 
-  use({
+  {
     "nvim-telescope/telescope.nvim",
-    requires = {
+    dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "BurntSushi/ripgrep" }
     },
-  })
+  },
 
-  use({ "machakann/vim-sandwich" })
+  { "machakann/vim-sandwich" },
 
-  use({ 'glepnir/lspsaga.nvim', branch = "main", config = function()
+  { 'glepnir/lspsaga.nvim', branch = "main", config = function()
       require('lspsaga').setup({})
     end,
-  })
+  },
 
-  use({ "norcalli/nvim-colorizer.lua" })
+  { "norcalli/nvim-colorizer.lua" },
 
-  use({ "sheerun/vim-polyglot" })
+  { "sheerun/vim-polyglot" },
 
-  use({ "tpope/vim-fugitive" })
+  { "tpope/vim-fugitive" },
 
-  use({ "b3nj5m1n/kommentary" })
+  { "b3nj5m1n/kommentary" },
 
-  use({ "nvim-treesitter/nvim-treesitter", run = ':TSUpdate' })
-  -- use({ 'nvim-treesitter/nvim-treesitter-context'})
+  { "nvim-treesitter/nvim-treesitter", run = ':TSUpdate' },
+  -- { 'nvim-treesitter/nvim-treesitter-context'},
 
-  use({
+  {
     "tyru/open-browser-github.vim",
-    requires = {
+    dependencies = {
       "tyru/open-browser.vim"
     }
-  })
+  },
 
-  use({ 'lukas-reineke/indent-blankline.nvim' })
+  { 'lukas-reineke/indent-blankline.nvim' },
 
-  use({ "ckipp01/scala-utils.nvim", requires = { "nvim-lua/plenary.nvim" } })
+  { "ckipp01/scala-utils.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 
-  use({ "L3MON4D3/LuaSnip" })
-  use({ "saadparwaiz1/cmp_luasnip" })
+  { "L3MON4D3/LuaSnip" },
+  { "saadparwaiz1/cmp_luasnip" },
 
-  use({ "windwp/nvim-autopairs" })
+  { "windwp/nvim-autopairs" },
 
-  use({ 'mfussenegger/nvim-dap' })
+  { 'mfussenegger/nvim-dap' },
 
-  use({ 'tpope/vim-unimpaired' })
+  { 'tpope/vim-unimpaired' },
 
-  use({ 'nvim-treesitter/nvim-treesitter-textobjects'})
+  { 'nvim-treesitter/nvim-treesitter-textobjects'},
 
-  use({ 'folke/neodev.nvim' })
+  { 'folke/neodev.nvim' },
 
-  use {'nvim-telescope/telescope-ui-select.nvim' }
+  {'nvim-telescope/telescope-ui-select.nvim' },
 
-  use "rebelot/kanagawa.nvim"
+  {"rebelot/kanagawa.nvim"},
 
-  use {
+  {
     "folke/which-key.nvim",
     config = function()
       vim.o.timeout = true
@@ -88,4 +88,4 @@ return require('packer').startup(function()
     end
   }
 
-end)
+})
