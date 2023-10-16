@@ -1,7 +1,5 @@
 ---@diagnostic disable: undefined-global
 return require('lazy').setup({
-  -- Packer can manage itself
-  { 'wbthomason/packer.nvim' },
 
   { 'kyazdani42/nvim-web-devicons' },
 
