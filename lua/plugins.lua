@@ -44,7 +44,7 @@ return require('lazy').setup({
 
   { "b3nj5m1n/kommentary" },
 
-  { "nvim-treesitter/nvim-treesitter", run = ':TSUpdate' },
+  { "nvim-treesitter/nvim-treesitter", build = ':TSUpdate' },
   -- { 'nvim-treesitter/nvim-treesitter-context'},
 
   {
